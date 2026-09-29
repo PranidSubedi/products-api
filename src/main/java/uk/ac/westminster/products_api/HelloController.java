@@ -31,6 +31,8 @@ public class HelloController {
     public String goodbye(){
         return "Goodbye!";
     }
+    @GetMapping("/info")
+    public String info(){return "SpringBoot Basics";}
 
     // TODO (Activity 3): add your /goodbye endpoint here.
 
