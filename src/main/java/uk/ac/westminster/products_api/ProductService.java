@@ -28,5 +28,10 @@ public class ProductService {
         );
     }
 
+    public void deleteProduct(Long id){
+        products.removeIf((p) -> p.getId().equals(id));
+        //If remove inside loop, that sends shortening list while looping through it error.
+
+    }
 
 }
