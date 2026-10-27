@@ -12,10 +12,12 @@ public class ProductController {
 
     @GetMapping("/products")
     public List<Product> getProduct() {
+
         return (productService.getAllProducts());
     }
     @GetMapping("/products/{id}")
     public Optional<Product> getProductById(@PathVariable Long id){
+
         return (productService.getProductById(id));
     }
 
@@ -28,5 +30,9 @@ public class ProductController {
     @DeleteMapping("/products/{id}")
     public void deleteProduct (@PathVariable long id){
         productService.deleteProduct(id);
+    }
+    @GetMapping ("/products/search")
+    public List<Product> findByName (@RequestParam String name){
+        return (productService.findByName(name));
     }
 }
