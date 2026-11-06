@@ -23,16 +23,23 @@ public class ProductController {
 
     @PostMapping("/products")
     public List<Product> addProduct(
-            @RequestBody Product product){
+            @RequestBody DigitalProduct product){ //Product Type has been changed to DigitalProduct, because Jackson Cannot create object of abstract class. This is a temporary fix.
         return productService.addProduct(product);
+        //This returned a 400 error. This was because, i didn't add fields of DigitalProduct.
     }
 
     @DeleteMapping("/products/{id}")
     public void deleteProduct (@PathVariable long id){
         productService.deleteProduct(id);
     }
+
     @GetMapping ("/products/search")
     public List<Product> findByName (@RequestParam String name){
         return (productService.findByName(name));
+    }
+
+    @GetMapping("/products/summaries")
+    public List<String> getSummaries () {
+        return (productService.getAllSummaries());
     }
 }

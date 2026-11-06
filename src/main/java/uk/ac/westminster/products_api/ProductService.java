@@ -48,7 +48,7 @@ public class ProductService {
 
     public void deleteProduct(Long id){
         products.removeIf((p) -> p.getId().equals(id));
-        //If remove inside loop, that sends shortening list while looping through it error.
+        //If remove inside loop, that sends shortening list while looping through its error.
 
     }
 
@@ -56,6 +56,22 @@ public class ProductService {
         return (products.stream().
                 filter((p) -> p.getName().contains(name)).
                 toList());
+    }
+
+    public List<String> getAllSummaries(){
+        List<String> summaries = new ArrayList<>();
+
+        for (Product p :products){
+//            p.applyDiscount(0.10);
+//            Cannot resolve method 'applyDiscount' in 'Product'
+//            if (p instanceof Discountable d) //Checks if p is instance of interface Discountable and then casts it to the variable d
+//            {
+//                d.applyDiscount(0.10);
+//            }
+            summaries.add(p.getSummary()+" ");
+        }
+        return summaries;
+
     }
 
 }
